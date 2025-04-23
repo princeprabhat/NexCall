@@ -24,7 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    // appearance={{
+    //   layout: { logoImageUrl: "/icons/yoom-logo.svg" },
+    // }}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-2`}
