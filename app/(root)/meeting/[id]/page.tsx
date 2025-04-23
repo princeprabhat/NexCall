@@ -1,6 +1,10 @@
 import React from "react";
 
-const Meeting = ({ params }: { params: { id: string } }) => {
+type Props = {
+  params: { id: string };
+};
+
+const Meeting = ({ params }: Props) => {
   return <div>Hello {params.id}</div>;
 };
 
