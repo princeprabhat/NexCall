@@ -1,4 +1,9 @@
-import React from "react";
+"use client";
+
+import { use, useState } from "react";
+
+import { useUser } from "@clerk/nextjs";
+import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 
 // type PageProps = {
 //   params: {
@@ -6,9 +11,23 @@ import React from "react";
 //   };
 // };
 
-const Meeting = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = await params;
-  return <div>Hello {id}</div>;
+// interface MeetingProps {
+//   params: { id: string };
+// }
+
+const Meeting = ({ params }: { params: Promise<{ id: string }> }) => {
+  const [isSetupComplete, setIsSetupComplete] = useState<boolean>(false);
+  const { id } = use(params);
+  const { user, isLoaded } = useUser();
+  return (
+    <main className="h-screen w-full">
+      <StreamCall>
+        <StreamTheme>
+          {!isSetupComplete ? "MeetingSetup" : "MeetingRoom"}
+        </StreamTheme>
+      </StreamCall>
+    </main>
+  );
 };
 
 export default Meeting;
