@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dark } from "@clerk/themes";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -33,7 +33,6 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        // baseTheme: dark,
         variables: {
           colorBackground: "#252A41",
           colorTextOnPrimaryBackground: "white",
