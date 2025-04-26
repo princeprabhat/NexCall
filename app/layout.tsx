@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { dark } from "@clerk/themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -30,7 +31,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        // baseTheme: dark,
+        variables: {
+          colorBackground: "#252A41",
+          colorTextOnPrimaryBackground: "white",
+          colorInputBackground: "#1C1F2E",
+          colorInputText: "white",
+          colorTextSecondary: "white",
+          colorNeutral: "white",
+          colorPrimary: "#0E78F9",
+          colorText: "white",
+        },
+        elements: {
+          socialButtonsBlockButton: {
+            backgroundColor: "#1C1F2E",
+            color: "#ffffff",
+          },
+        },
+      }}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-2`}
